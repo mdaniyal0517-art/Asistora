@@ -175,7 +175,7 @@ class AsistoraChatbot {
     // use a server-side proxy at /api/chat which reads GROQ_API_KEY from server env.
     if (!GROQ_API_KEY) {
       const payload = {
-        model: 'llama3-8b-8192',
+        model: 'llama-3.1-8b-instant',
         messages: [
           {
             role: 'system',
@@ -202,10 +202,10 @@ Rules:
 
       // Try server proxy first
   // Prefer explicit proxy during local development so requests don't hit a static dev server (e.g. Live Server on :5500)
-  const proxyHost = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') ? 'http://localhost:8081' : '';
+  const proxyHost = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') ? 'http://localhost:3000' : '';
   const proxyUrl = proxyHost + '/api/chat';
 
-  fetch(proxyUrl, {
+      const tryProxy = (url) => fetch(url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
@@ -213,15 +213,21 @@ Rules:
       .then(r => {
         if (!r.ok) throw new Error('Proxy not available');
         return r.json();
+      });
+
+      // Try primary port then fallback to alternate port (3000) before demo
+      tryProxy(proxyUrl)
+      .catch(() => {
+        const altUrl = 'http://localhost:3000/api/chat';
+        if (proxyUrl === altUrl) throw new Error('no-alt');
+        return tryProxy(altUrl);
       })
       .then(data => {
         this.hideTyping();
-        // Compatible with Groq/OpenAI style response
-        const reply = (data && data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content) || 'Sorry, no reply.';
+        const reply = (data && data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content) || (data && data.reply) || 'Sorry, no reply.';
         this.addMessage(reply, 'bot');
       })
       .catch(() => {
-        // Demo fallback if proxy fails
         setTimeout(() => {
           this.hideTyping();
           this.addMessage('Thanks for the message — demo reply. To enable real AI replies, add your GROQ_API_KEY to the server .env and run the proxy.', 'bot');
@@ -238,8 +244,8 @@ Rules:
         'Authorization': `Bearer ${GROQ_API_KEY}`,
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({
-        model: 'llama3-8b-8192',
+    body: JSON.stringify({
+      model: 'llama-3.1-8b-instant',
         messages: [
           {
             role: 'system',
