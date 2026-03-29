@@ -1,9 +1,16 @@
-# Original Asistora Website - COMPLETE ✅
+# Vercel Deployment TODO for Asistora (Full-stack: Frontend + Chatbot Proxy)
 
-Original task fully delivered. All pages created, responsive, animated.
+## Progress: 6/8 ✅
 
-**Upgrade Status:** $10k polish applied (CSS/JS premium, dark mode, cursor, tilts, particles, PWA). See UPGRADE-TODO.md.
+### 1. ✅ Create root package.json (for Vercel Node.js detection)
+### 2. ✅ Create vercel.json (rewrites for API/static)
+### 3. ✅ Verify server/package.json & deps (package-lock.json present)
+### 4. ✅ Install Vercel CLI globally (v50.37.3)
+### 5. ✅ User: Create server/.env with GROQ_API_KEY (local preview)
+### 6. 🔄 Run `vercel` (interactive: dir=./, settings? N | y? N to deploy)
+### 7. [ ] Set env vars in Vercel dashboard (GROQ_API_KEY)
+### 8. [ ] `vercel --prod` & test live site/chatbot
 
-Live preview now at http://127.0.0.1:61630 (new port after restart).
+**Post-deploy:** Custom domain optional via Vercel dashboard.
 
-Both versions preserved—original solid, upgrade agency-level.
+**Note:** Git add/commit/push optional (Vercel deploys direct from dir).

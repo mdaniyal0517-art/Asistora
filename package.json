@@ -1,0 +1,24 @@
+{
+  "name": "asistora",
+  "version": "1.0.0",
+  "description": "Asistora - Premium AI Chatbot Agency Website with Groq Proxy",
+  "main": "server/index.js",
+  "scripts": {
+    "dev": "cd server && npm run dev",
+    "start": "cd server && npm start",
+    "vercel-build": "cd server && npm install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "."
+  },
+  "keywords": ["website", "chatbot", "ai", "vercel"],
+  "author": "Asistora",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "workspaces": [
+    "server"
+  ]
+}
