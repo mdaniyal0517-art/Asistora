@@ -1,5 +1,7 @@
-// Asistora Live Chatbot - Powered by Groq
-const GROQ_API_KEY = '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';
+// Asistora Live Chatbot
+// NOTE: API keys must NOT be shipped to the browser.
+// Remove any hard-coded secret and use a server-side proxy to call the Groq API.
+const GROQ_API_KEY = ''; // intentionally empty — configure on the server
 const GROQ_URL = 'https://api.groq.com/openai/v1/chat/completions';
 
 class AsistoraChatbot {
@@ -169,6 +171,67 @@ class AsistoraChatbot {
     
     this.showTyping();
     
+    // SECURITY: Do NOT send API keys from the browser. If no server proxy is configured,
+    // use a server-side proxy at /api/chat which reads GROQ_API_KEY from server env.
+    if (!GROQ_API_KEY) {
+      const payload = {
+        model: 'llama3-8b-8192',
+        messages: [
+          {
+            role: 'system',
+            content: `You are Asistora Bot for Asistora AI agency - Intelligent Chatbots. Real Business Growth.
+
+Key Info:
+- Services: Customer Support Chatbots, Website Chatbots, WhatsApp Automation, Lead Generation, Appointment Booking, Custom AI Agents, Business Process Automation
+- Target Clients: Universities, E-commerce, SMBs, Service Companies, Startups
+- Pricing: Starter $49/mo (basic), Business $199/mo (advanced + analytics), Enterprise Custom
+- Value Prop: 3x leads, 80% cost savings, 24/7 availability
+
+Rules:
+1. Answer ONLY from website context
+2. Be professional & persuasive  
+3. Always end with CTA: demo, pricing page, or contact
+4. Keep responses 2-4 sentences max
+5. Mention specific services when relevant`
+          },
+          { role: 'user', content: message }
+        ],
+        max_tokens: 250,
+        temperature: 0.7
+      };
+
+      // Try server proxy first
+  // Prefer explicit proxy during local development so requests don't hit a static dev server (e.g. Live Server on :5500)
+  const proxyHost = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') ? 'http://localhost:8081' : '';
+  const proxyUrl = proxyHost + '/api/chat';
+
+  fetch(proxyUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+      .then(r => {
+        if (!r.ok) throw new Error('Proxy not available');
+        return r.json();
+      })
+      .then(data => {
+        this.hideTyping();
+        // Compatible with Groq/OpenAI style response
+        const reply = (data && data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content) || 'Sorry, no reply.';
+        this.addMessage(reply, 'bot');
+      })
+      .catch(() => {
+        // Demo fallback if proxy fails
+        setTimeout(() => {
+          this.hideTyping();
+          this.addMessage('Thanks for the message — demo reply. To enable real AI replies, add your GROQ_API_KEY to the server .env and run the proxy.', 'bot');
+        }, 800);
+      });
+
+      return;
+    }
+
+    // If a GROQ_API_KEY is present (NOT recommended in client-side code), the code would call the API.
     fetch(GROQ_URL, {
       method: 'POST',
       headers: {
@@ -176,7 +239,7 @@ class AsistoraChatbot {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        model: 'llama-3.1-8b-instant',
+        model: 'llama3-8b-8192',
         messages: [
           {
             role: 'system',

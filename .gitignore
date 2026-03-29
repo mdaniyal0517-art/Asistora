@@ -1,0 +1,38 @@
+# Node
+node_modules/
+server/node_modules/
+
+# Logs
+npm-debug.log*
+*.log
+
+# Environment files (do NOT commit secrets)
+.env
+server/.env
+.env.local
+.env.*.local
+
+# Dependency directories
+/.pnp
+.pnp.js
+
+# Build output
+dist/
+build/
+out/
+
+# Runtime
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+*.code-workspace
+.idea/
+
+# Test coverage
+coverage/
+
+# Misc
+.cache/
+/*.tgz
