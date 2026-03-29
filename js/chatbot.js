@@ -1,7 +1,4 @@
-// Asistora Live Chatbot
-// NOTE: API keys must NOT be shipped to the browser.
-// Remove any hard-coded secret and use a server-side proxy to call the Groq API.
-const GROQ_API_KEY = ''; // intentionally empty — configure on the server
+
 const GROQ_URL = 'https://api.groq.com/openai/v1/chat/completions';
 
 class AsistoraChatbot {
