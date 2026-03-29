@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Asistora - Get Your Free Demo</title>
+  <meta name="description" content="Contact Asistora for AI chatbot demos, pricing quotes, and custom solutions. Email, form, map location.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Loading Screen -->
+  <div class="loading">
+    <div class="spinner"></div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-container container">
+      <a href="index.html" class="logo">Asistora</a>
+      <ul class="nav-menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="#contact" class="active">Contact</a></li>
+      </ul>
+      <div class="mobile-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" style="background: var(--primary-gradient); padding: 150px 0 100px;">
+    <div class="container">
+      <div class="hero-content text-center fade-in-up">
+        <h1>Get In Touch</h1>
+        <p>Ready to automate? Let's talk about your perfect AI solution.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form -->
+  <section id="contact" class="contact section-padding">
+    <div class="container grid grid-2">
+      <div class="fade-in-up">
+        <h2>Send us a Message</h2>
+        <p>Fill out the form below or email us directly at <a href="mailto:hello@asistora.ai">hello@asistora.ai</a></p>
+        
+        <form id="contact-form">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="inquiry">Business Inquiry</label>
+            <select id="inquiry" name="inquiry" required>
+              <option value="">Select one...</option>
+              <option value="demo">Free Demo Request</option>
+              <option value="pricing">Pricing Quote</option>
+              <option value="custom">Custom Solution</option>
+              <option value="support">Support</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="6" required placeholder="Tell us about your automation needs..."></textarea>
+          </div>
+          <button type="submit" class="cta-primary" style="width: 100%; padding: 1.25rem;">Send Message</button>
+        </form>
+      </div>
+      
+      <div class="fade-in-up">
+        <div class="card p-3">
+          <h3>Business Hours</h3>
+          <p>Monday - Friday<br>9AM - 6PM EST</p>
+          <p><strong>Phone:</strong> +1 (555) 123-4567<br><strong>Email:</strong> hello@asistora.ai</p>
+        </div>
+        
+        <div class="card p-3 mt-4">
+          <h3>Follow Us</h3>
+          <div class="social-links">
+            <a href="#" class="social-btn" style="background: #1da1f2; color: white; padding: 0.75rem 1rem; border-radius: 50px; margin-right: 1rem; display: inline-block;">Twitter</a>
+            <a href="#" class="social-btn" style="background: #0077b5; color: white; padding: 0.75rem 1rem; border-radius: 50px; margin-right: 1rem; display: inline-block;">LinkedIn</a>
+            <a href="#" class="social-btn" style="background: #ff0050; color: white; padding: 0.75rem 1rem; border-radius: 50px; display: inline-block;">Discord</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Map -->
+  <section class="map section-padding bg-light">
+    <div class="container">
+      <div class="text-center mb-4 fade-in-up">
+        <h2>Our Location</h2>
+        <p>Global remote team with offices in San Francisco &amp; Singapore</p>
+      </div>
+      <div class="glass-card fade-in-up">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3168.639043609843!2d-122.4194156846813!3d37.77492977975966!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fcae704d57d65%3A0x55c10db507ae2b3f!2sSan%20Francisco%2C%20CA%2C%20USA!5e0!3m2!1sen!2sus!4v1690000000000" width="100%" height="400" style="border:0; border-radius: 20px;" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="newsletter">
+    <div class="container">
+      <h2 class="fade-in-up">Stay Updated</h2>
+      <p class="fade-in-up">Get AI automation tips and new features.</p>
+      <form id="newsletter-form" class="fade-in-up">
+        <input type="email" placeholder="Enter your email" required>
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Floating Chatbot -->
+  <div class="chatbot-float">💬</div>
+  <div class="chatbot-window">
+    <div style="padding: 1.5rem; border-bottom: 1px solid #e2e8f0;">
+      <h4>Live Chat Support 📞</h4>
+    </div>
+    <div style="padding: 1rem; height: 400px; overflow-y: auto;">
+      <p>A human will respond in <2 minutes during business hours!</p>
+    </div>
+  </div>
+
+  <!-- Scroll Top -->
+  <button class="scroll-top">↑</button>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-section">
+          <h4>Asistora</h4>
+          <p>Intelligent Chatbots. Real Business Growth.</p>
+        </div>
+        <div class="footer-section">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:hello@asistora.ai">hello@asistora.ai</a></li>
+            <li><a href="tel:+15551234567">+1 (555) 123-4567</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Connect</h4>
+          <div>
+            <a href="#">Twitter</a> | <a href="#">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2024 Asistora. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
