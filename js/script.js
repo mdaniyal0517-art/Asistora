@@ -12,17 +12,41 @@ document.addEventListener('DOMContentLoaded', function() {
   // Navbar mobile toggle
   const mobileToggle = document.querySelector('.mobile-toggle');
   const navMenu = document.querySelector('.nav-menu');
-  
+
   if (mobileToggle && navMenu) {
-    mobileToggle.addEventListener('click', () => {
-      navMenu.classList.toggle('active');
-      mobileToggle.classList.toggle('active');
+    const setExpanded = (expanded) => {
+      mobileToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+    };
+
+    const toggleMenu = () => {
+      const next = !navMenu.classList.contains('active');
+      navMenu.classList.toggle('active', next);
+      mobileToggle.classList.toggle('active', next);
+      setExpanded(next);
+    };
+
+    mobileToggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      toggleMenu();
+    });
+
+    mobileToggle.addEventListener('touchstart', (e) => {
+      // Prevent iOS from triggering click twice
+      e.stopPropagation();
+    }, { passive: true });
+
+    mobileToggle.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleMenu();
+      }
     });
 
     navMenu.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
         navMenu.classList.remove('active');
         mobileToggle.classList.remove('active');
+        setExpanded(false);
       });
     });
   }
@@ -91,41 +115,68 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // Testimonials slider
-  const testimonials = document.querySelectorAll('.testimonial');
+  // Testimonials slider (supports current homepage markup)
+  // Prefer explicit testimonial cards if present; otherwise fall back to the homepage testimonial section cards.
+  const testimonialCards = Array.from(
+    document.querySelectorAll('section[aria-label="Testimonials"] .card')
+  );
+
   let currentTestimonial = 0;
 
+
   function showTestimonial(index) {
-    testimonials.forEach((t, i) => {
+    testimonialCards.forEach((t, i) => {
       t.style.display = i === index ? 'block' : 'none';
       if (i === index) t.classList.add('slide-in-left');
+      else t.classList.remove('slide-in-left');
     });
   }
 
+
   if (testimonials.length > 0) {
+    // Ensure consistent initial state
+    showTestimonial(0);
     setInterval(() => {
       currentTestimonial = (currentTestimonial + 1) % testimonials.length;
       showTestimonial(currentTestimonial);
     }, 5000);
-    showTestimonial(0);
   }
 
-  // FAQ accordion
+
+  // FAQ accordion (click + keyboard + ARIA)
   document.querySelectorAll('.faq-question').forEach(question => {
-    question.addEventListener('click', () => {
+    const toggleFAQ = () => {
       const answer = question.nextElementSibling;
       const icon = question.querySelector('.faq-icon');
+      const isExpanded = question.getAttribute('aria-expanded') === 'true';
 
       answer.classList.toggle('active');
+      question.setAttribute('aria-expanded', (!isExpanded).toString());
 
       // Close others
       document.querySelectorAll('.faq-answer.active').forEach(a => {
-        if (a !== answer) a.classList.remove('active');
+        if (a !== answer) {
+          a.classList.remove('active');
+          const q = a.previousElementSibling;
+          if (q && q.classList && q.classList.contains('faq-question')) q.setAttribute('aria-expanded', 'false');
+          const otherIcon = q ? q.querySelector('.faq-icon') : null;
+          if (otherIcon) otherIcon.classList.remove('rotated');
+        }
       });
 
       if (icon) icon.classList.toggle('rotated');
+    };
+
+    question.addEventListener('click', toggleFAQ);
+
+    question.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleFAQ();
+      }
     });
   });
+
 
   // Contact form
   const contactForm = document.querySelector('#contact-form');

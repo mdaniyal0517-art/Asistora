@@ -10,7 +10,76 @@ class AsistoraChatbot {
     this.chatToggle = document.querySelector('.chatbot-float');
     this.isTyping = false;
     this.chatInput = null;
-    
+
+    // Interactive navigation service catalog (single source of truth)
+    // IMPORTANT: keep ONLY services that exist as <section id="..."> on your website.
+    this.services = [
+      {
+        id: 'support',
+        icon: '🎭',
+        title: 'AI Customer Support Chatbots',
+        description: '24/7 support agents that resolve customer questions quickly and escalate when needed.',
+        href: 'services.html#support'
+      },
+      {
+        id: 'whatsapp',
+        icon: '📱',
+        title: 'WhatsApp Automation Bots',
+        description: 'WhatsApp Business API flows for lead nurturing and customer communication.',
+        href: 'services.html#whatsapp'
+      },
+      {
+        id: 'leads',
+        icon: '📬',
+        title: 'Lead Generation Bots',
+        description: 'Qualify leads 24/7 and book meetings automatically.',
+        href: 'services.html#leads'
+      },
+      {
+        id: 'no-show-reducer',
+        icon: '📉',
+        title: 'WhatsApp No-Show Reducer',
+        description: 'Automated reminders + nudges that reduce no-shows and improve attendance.',
+        href: 'services.html#no-show-reducer'
+      },
+      {
+        id: 'review-reply-generator',
+        icon: '💬',
+        title: 'AI Review Reply Generator',
+        description: 'Instant, brand-aligned replies for Google reviews and customer feedback.',
+        href: 'services.html#review-reply-generator'
+      },
+      {
+        id: 'rebooking-loyalty-nudges',
+        icon: '🔁',
+        title: 'Rebooking & Loyalty Nudges',
+        description: 'Smart follow-ups that bring customers back and build loyalty.',
+        href: 'services.html#rebooking-loyalty-nudges'
+      },
+      {
+        id: 'missed-call-textback',
+        icon: '📞',
+        title: 'Missed-Call to Booking Textback',
+        description: 'Auto-text the customer and guide them to booking in seconds.',
+        href: 'services.html#missed-call-textback'
+      },
+      {
+        id: 'quote-followup-autopilot',
+        icon: '🧠',
+        title: 'Quote Follow-Up Autopilot',
+        description: 'Automated quote reminders that convert more leads with less effort.',
+        href: 'services.html#quote-followup-autopilot'
+      },
+      {
+        id: 'review-request-engine',
+        icon: '⭐',
+        title: 'Review Request Engine',
+        description: 'Request reviews at the right time to grow reputation and conversions.',
+        href: 'services.html#review-request-engine'
+      }
+    ];
+
+
     this.init();
   }
 
@@ -19,9 +88,8 @@ class AsistoraChatbot {
 
     this.setupDOM();
 
-  console.log('AsistoraChatbot: init');
-
   // Ensure chat is hidden initially (use CSS .active for transitions)
+
   this.chatWindow.classList.remove('active');
 
     // Accessible toggle button
@@ -39,12 +107,12 @@ class AsistoraChatbot {
     }
 
     // Use setOpen for consistent open/close behavior
-    // Debug: log pointer events on the float button to ensure clicks reach it
-    this.chatToggle.addEventListener('pointerdown', (e) => {
-      console.log('AsistoraChatbot: pointerdown on float', e.type, e.target);
-    });
+    // Pointer events (kept for potential future enhancements)
+    this.chatToggle.addEventListener('pointerdown', () => {});
+
+
     this.chatToggle.addEventListener('click', (e) => {
-      console.log('AsistoraChatbot: click on float');
+
       e.stopPropagation();
       const isOpen = this.chatWindow.classList.contains('active');
       this.setOpen(!isOpen);
@@ -162,17 +230,206 @@ class AsistoraChatbot {
     this.scrollToBottom();
   }
 
+  // Keyword-based UX helpers (navigation-first bot)
+  shouldShowServiceCards(userText) {
+    const t = (userText || '').toLowerCase();
+    const offerIntents = [
+      'what do you offer',
+      'what you offer',
+      'what do you have',
+      'what can you do',
+      'show your services',
+      'show services',
+      'services',
+      'service',
+      'products',
+      'product',
+      'do you offer',
+      'what can you do',
+      'options',
+      'browse'
+    ];
+    return offerIntents.some(k => t.includes(k));
+  }
+
+
+  resolveServiceFromText(userText) {
+    const t = (userText || '').toLowerCase();
+    const map = [
+      { test: ['no-show', 'no show', 'noshow'], id: 'no-show-reducer' },
+      { test: ['review reply', 'review', 'reviews', 'reply'], id: 'review-reply-generator' },
+      { test: ['rebooking', 'loyalty', 'nudges', 'repeat'], id: 'rebooking-loyalty-nudges' },
+      { test: ['missed call', 'missed-call', 'textback', 'text back'], id: 'missed-call-textback' },
+      { test: ['quote', 'follow up', 'follow-up', 'autopilot'], id: 'quote-followup-autopilot' },
+      { test: ['review request', 'request reviews', 'rating'], id: 'review-request-engine' }
+    ];
+    for (const row of map) {
+      if (row.test.some(k => t.includes(k))) return row.id;
+    }
+    return null;
+  }
+
+  renderServiceCards({ subsetIds = null, introText = 'Here are our available automation products. Click any option to explore more.' } = {}) {
+    const ids = subsetIds && subsetIds.length ? subsetIds : this.services.map(s => s.id);
+    const cards = ids.map(id => this.services.find(s => s.id === id)).filter(Boolean);
+
+    // Intro message bubble
+    if (introText) {
+      this.addMessage(introText, 'bot');
+    }
+
+    const wrapper = document.createElement('div');
+    wrapper.className = 'chat-services-wrapper';
+    wrapper.style.cssText = 'margin-top: 10px; display:grid; grid-template-columns: 1fr; gap: 10px;';
+
+    cards.forEach(service => {
+      const card = document.createElement('button');
+      card.type = 'button';
+      card.className = 'chat-service-card';
+      card.setAttribute('aria-label', `Open ${service.title}`);
+      card.style.cssText = `
+        display:flex; align-items:flex-start; gap: 12px;
+        width: 100%;
+        text-align:left;
+        padding: 12px 12px;
+        border-radius: 16px;
+        background: rgba(255,255,255,0.95);
+        border: 1px solid rgba(2,8,23,0.08);
+        box-shadow: 0 6px 18px rgba(2,8,23,0.06);
+        cursor:pointer;
+        transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
+      `;
+
+      card.addEventListener('click', () => {
+        this.navigateToService(service);
+      });
+
+      // Icon
+      const icon = document.createElement('div');
+      icon.textContent = service.icon;
+      icon.setAttribute('aria-hidden', 'true');
+      icon.style.cssText = 'font-size: 22px; width: 34px; height: 34px; display:flex; align-items:center; justify-content:center; border-radius: 12px; background: rgba(59,130,246,0.10); border: 1px solid rgba(59,130,246,0.18);';
+
+      const body = document.createElement('div');
+      body.style.cssText = 'min-width:0;';
+
+      const title = document.createElement('div');
+      title.textContent = service.title;
+      title.style.cssText = 'font-weight: 800; font-size: 14px; color: rgba(2,8,23,0.92);';
+
+      const desc = document.createElement('div');
+      desc.textContent = service.description;
+      desc.style.cssText = 'margin-top: 4px; font-size: 12.5px; color: rgba(2,8,23,0.65); line-height: 1.35;';
+
+      const arrow = document.createElement('div');
+      arrow.textContent = '↗';
+      arrow.setAttribute('aria-hidden', 'true');
+      arrow.style.cssText = 'margin-left:auto; color: rgba(37,99,235,0.85); font-weight:900; padding-top:2px;';
+
+      body.appendChild(title);
+      body.appendChild(desc);
+
+      card.appendChild(icon);
+      card.appendChild(body);
+      card.appendChild(arrow);
+
+      // Hover animation (with reduced motion support via CSS)
+      card.addEventListener('pointerenter', () => {
+        card.style.transform = 'translateY(-2px)';
+        card.style.boxShadow = '0 14px 28px rgba(2,8,23,0.10)';
+        card.style.borderColor = 'rgba(59,130,246,0.25)';
+      });
+      card.addEventListener('pointerleave', () => {
+        card.style.transform = 'translateY(0)';
+        card.style.boxShadow = '0 6px 18px rgba(2,8,23,0.06)';
+        card.style.borderColor = 'rgba(2,8,23,0.08)';
+      });
+
+      wrapper.appendChild(card);
+    });
+
+    // Wrap inside a bot message row for consistent spacing
+    const row = document.createElement('div');
+    row.style.cssText = 'margin-bottom: 0.75rem; display:flex; justify-content:flex-start; padding-bottom:0.25rem;';
+    const bubble = document.createElement('div');
+    bubble.style.cssText = 'max-width: 100%; width: 100%;';
+    bubble.appendChild(wrapper);
+    row.appendChild(bubble);
+
+    this.chatMessages.appendChild(row);
+    this.scrollToBottom();
+  }
+
+  navigateToService(service) {
+    try {
+      const url = service.href;
+      const shouldMinimize = true;
+
+      if (shouldMinimize) this.setOpen(false);
+
+      // Redirect to services page with hash
+      if (url && url.includes('#')) {
+        const hash = url.split('#')[1] || '';
+        // Ensure smooth-scroll after navigation to hash (works even when browsers don't scroll smoothly)
+        window.location.href = `services.html#${hash}`;
+        return;
+      }
+
+      window.location.href = url;
+    } catch (e) {
+      // Fallback: no-op
+    }
+  }
+
+  // Ensure smooth scroll to hash target after arriving on services.html
+  afterNavigationScroll() {
+    try {
+      if (window.location.pathname && !window.location.pathname.endsWith('services.html')) return;
+
+      const hash = (window.location.hash || '').replace('#', '').trim();
+      if (!hash) return;
+
+      const el = document.getElementById(hash);
+      if (!el) return;
+
+      // Allow layout to settle before scrolling (esp. on mobile)
+      setTimeout(() => {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 150);
+    } catch (e) {
+      // no-op
+    }
+  }
+
+
   sendMessage() {
     if (!this.chatInput || !this.chatInput.value.trim() || this.isTyping) return;
-    
+
     const message = this.chatInput.value.trim();
+    const shouldCards = this.shouldShowServiceCards(message);
+    const matchedServiceId = this.resolveServiceFromText(message);
+    const subsetIds = matchedServiceId ? [matchedServiceId] : null;
+    
+    // Decide cards-before-AI (navigation-first UX)
+    const cardsBeforeAI = shouldCards || !!matchedServiceId;
+
     this.chatInput.value = '';
     this.addMessage(message, 'user');
-    
+
+    // Navigation-first UX: show interactive cards immediately
+    if (cardsBeforeAI) {
+      this.hideTyping();
+      const intro = shouldCards ? 'Here are our available automation products. Click any option to explore more.' : '';
+      this.renderServiceCards({ subsetIds: subsetIds, introText: intro });
+      return;
+    }
+
     this.showTyping();
+
     
-    // SECURITY: Do NOT send API keys from the browser. If no server proxy is configured,
-    // use a server-side proxy at /api/chat which reads GROQ_API_KEY from server env.
+      // SECURITY: Do NOT send API keys from the browser. If no server proxy is configured,
+      // use a server-side proxy at /api/chat which reads GROQ_API_KEY from server env.
+
     if (!GROQ_API_KEY) {
       const payload = {
         model: 'llama-3.1-8b-instant',
@@ -315,5 +572,8 @@ Rules:
 
 // Initialize on DOM ready
 document.addEventListener('DOMContentLoaded', () => {
-  new AsistoraChatbot();
+  const bot = new AsistoraChatbot();
+  // If we loaded services.html#hash, scroll smoothly to the matching section.
+  if (bot && typeof bot.afterNavigationScroll === 'function') bot.afterNavigationScroll();
 });
+

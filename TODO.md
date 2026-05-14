@@ -1,16 +1,17 @@
-# Vercel Deployment TODO for Asistora (Full-stack: Frontend + Chatbot Proxy)
+# TODO - Interactive Navigation Assistant for Assistora
 
-## Progress: 6/8 ✅
+- [ ] Create reusable service catalog in `js/chatbot.js` (6 services with icon/title/description/target url+hash)
+- [ ] Update `js/chatbot.js` to render clickable service cards inside chatbot when user asks “What do you offer?” and for relevant keywords
+- [ ] Implement card click behavior: smooth scroll (same page) or redirect to `services.html#anchor` (other pages) + optional chatbot minimize
+- [ ] Add service sections/anchors in `services.html` for:
+  - [ ] WhatsApp No-Show Reducer
+  - [ ] AI Review Reply Generator
+  - [ ] Rebooking & Loyalty Nudges
+  - [ ] Missed-Call to Booking Textback
+  - [ ] Quote Follow-Up Autopilot
+  - [ ] Review Request Engine
+- [x] Add modern card/button styles for in-chat service cards in `css/style.css`
 
-### 1. ✅ Create root package.json (for Vercel Node.js detection)
-### 2. ✅ Create vercel.json (rewrites for API/static)
-### 3. ✅ Verify server/package.json & deps (package-lock.json present)
-### 4. ✅ Install Vercel CLI globally (v50.37.3)
-### 5. ✅ User: Create server/.env with GROQ_API_KEY (local preview)
-### 6. 🔄 Run `vercel` (interactive: dir=./, settings? N | y? N to deploy)
-### 7. [ ] Set env vars in Vercel dashboard (GROQ_API_KEY)
-### 8. [ ] `vercel --prod` & test live site/chatbot
+- [ ] Ensure accessibility (keyboard + aria) and reduced-motion support
+- [ ] Quick manual test: open homepage/services and use chatbot to navigate
 
-**Post-deploy:** Custom domain optional via Vercel dashboard.
-
-**Note:** Git add/commit/push optional (Vercel deploys direct from dir).
