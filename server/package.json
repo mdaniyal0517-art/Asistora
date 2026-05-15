@@ -23,8 +23,5 @@
     "server"
   ],
   "author": "Asistora",
-  "license": "MIT",
-  "engines": {
-    "node": "22.x"
-  }
+  "license": "MIT"
 }
