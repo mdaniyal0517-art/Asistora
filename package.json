@@ -16,9 +16,9 @@
   "keywords": ["website", "chatbot", "ai", "vercel"],
   "author": "Asistora",
   "license": "MIT",
-  "engines": {
-    "node": ">=18"
-  },
+"engines": {
+  "node": "22.x"
+},
   "workspaces": [
     "server"
   ]
