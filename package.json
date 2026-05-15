@@ -5,6 +5,7 @@
   "main": "server/index.js",
   "scripts": {
     "dev": "cd server && npm run dev",
+    "build": "npm run vercel-build",
     "start": "cd server && npm start",
     "vercel-build": "cd server && npm install"
   },
