@@ -7,7 +7,7 @@
     "dev": "cd server && npm run dev",
     "build": "npm run vercel-build",
     "start": "cd server && npm start",
-    "vercel-build": "cd server && npm install"
+    "vercel-build": "npm install --prefix server && node scripts/build.js"
   },
   "repository": {
     "type": "git",
@@ -16,9 +16,9 @@
   "keywords": ["website", "chatbot", "ai", "vercel"],
   "author": "Asistora",
   "license": "MIT",
-"engines": {
-  "node": "22.x"
-},
+  "engines": {
+    "node": "22.x"
+  },
   "workspaces": [
     "server"
   ]
