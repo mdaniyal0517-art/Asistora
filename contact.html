@@ -1,204 +1,264 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Asistora - AI Chatbot Agency</title>
-  <meta name="description" content="Learn about Asistora's mission, team, and vision for AI-powered business automation.">
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Asistora - AI Chatbot Agency</title>
+    <meta
+      name="description"
+      content="Learn about Asistora's mission, team, and vision for AI-powered business automation."
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- Loading Screen -->
+    <div class="loading">
+      <div class="spinner"></div>
+    </div>
 
-  <!-- Loading Screen -->
-  <div class="loading">
-    <div class="spinner"></div>
-  </div>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="nav-container container">
+        <a href="index.html" class="logo">Asistora</a>
+        <ul class="nav-menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="#about" class="active">About</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="mobile-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </nav>
 
-  <!-- Navbar -->
-  <nav class="navbar">
-    <div class="nav-container container">
-      <a href="index.html" class="logo">Asistora</a>
-      <ul class="nav-menu">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="#about" class="active">About</a></li>
-        <li><a href="pricing.html">Pricing</a></li>
-        <li><a href="portfolio.html">Portfolio</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-      <div class="mobile-toggle">
-        <span></span>
-        <span></span>
-        <span></span>
+    <!-- Hero -->
+    <section
+      class="hero"
+      style="background: var(--primary-gradient); padding: 150px 0 100px"
+    >
+      <div class="container">
+        <div class="hero-content text-center fade-in-up">
+          <h1>About Asistora</h1>
+          <p>
+            Building the future of intelligent automation, one conversation at a
+            time.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mission & Vision -->
+    <section class="mission section-padding">
+      <div class="container grid grid-2">
+        <div class="fade-in-up">
+          <h2>Our Mission</h2>
+          <p>
+            We empower businesses with AI chatbots that don't just respond—they
+            understand, learn, and grow your revenue while reducing costs by
+            80%.
+          </p>
+          <p>
+            From universities streamlining admissions to e-commerce stores
+            capturing cart abandonments, our technology scales with your
+            ambitions.
+          </p>
+        </div>
+        <div class="fade-in-up">
+          <h2>Our Vision</h2>
+          <p>
+            A world where every business has its own intelligent agent working
+            24/7.
+          </p>
+          <p>
+            Custom AI that's easy to deploy, infinitely scalable, and delivers
+            measurable ROI from day one.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Founder Story -->
+    <section class="founder section-padding bg-light">
+      <div class="container">
+        <div class="text-center mb-4 fade-in-up">
+          <h2>The Story Behind Asistora</h2>
+          <p>From frustration to innovation.</p>
+        </div>
+        <div
+          class="glass-card max-w-800 mx-auto text-center fade-in-up"
+          style="max-width: 800px"
+        >
+          <p>
+            Founded by a team of AI researchers and serial entrepreneurs who
+            were tired of clunky chatbots that failed to deliver real value.
+          </p>
+          <br />
+          <p>
+            We built Asistora to solve this: combining cutting-edge LLMs with
+            business intelligence to create agents that actually drive growth.
+            What started as an internal tool for our own startups now powers
+            hundreds of businesses worldwide.
+          </p>
+          <blockquote style="font-style: italic; margin-top: 2rem">
+            "We don't sell chatbots. We build growth engines."
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-us section-padding">
+      <div class="container">
+        <div class="text-center mb-4 fade-in-up">
+          <h2>Why Businesses Choose Asistora</h2>
+        </div>
+        <div class="grid grid-4">
+          <div class="card text-center fade-in-up">
+            <div class="icon mb-4" style="font-size: 3rem">🚀</div>
+            <h3>Lightning Fast Deployment</h3>
+            <p>Live in days, not months. No coding required.</p>
+          </div>
+          <div class="card text-center fade-in-up">
+            <div class="icon mb-4" style="font-size: 3rem">🧠</div>
+            <h3>Advanced AI Intelligence</h3>
+            <p>Powered by latest LLMs with human-like understanding.</p>
+          </div>
+          <div class="card text-center fade-in-up">
+            <div class="icon mb-4" style="font-size: 3rem">📊</div>
+            <h3>Proven ROI</h3>
+            <p>3x leads, 80% cost savings—guaranteed or your money back.</p>
+          </div>
+          <div class="card text-center fade-in-up">
+            <div class="icon mb-4" style="font-size: 3rem">🔒</div>
+            <h3>Enterprise Security</h3>
+            <p>GCP/AWS hosted, GDPR/CCPA compliant, 99.99% uptime.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tech Stack -->
+    <section class="tech section-padding bg-light">
+      <div class="container">
+        <div class="text-center mb-4 fade-in-up">
+          <h2>Powered by Cutting-Edge Technology</h2>
+        </div>
+        <div class="grid grid-4">
+          <div class="text-center fade-in-up">
+            <div
+              class="logo-placeholder mb-2"
+              style="background: #10b981; font-size: 2rem"
+            >
+              🤖
+            </div>
+            <h4>LLM Models</h4>
+            <p>Latest GPT-4o, Claude, Llama</p>
+          </div>
+          <div class="text-center fade-in-up">
+            <div
+              class="logo-placeholder mb-2"
+style="background: var(--accent); font-size: 2rem"
+            >
+              💬
+            </div>
+            <h4>WhatsApp API</h4>
+            <p>Official Business API</p>
+          </div>
+          <div class="text-center fade-in-up">
+            <div
+              class="logo-placeholder mb-2"
+              style="background: #f59e0b; font-size: 2rem"
+            >
+              📈
+            </div>
+            <h4>Analytics</h4>
+            <p>Real-time dashboards</p>
+          </div>
+          <div class="text-center fade-in-up">
+            <div
+              class="logo-placeholder mb-2"
+              style="background: #ec4899; font-size: 2rem"
+            >
+              ⚙️
+            </div>
+            <h4>Integrations</h4>
+            <p>CRM, Zapier, APIs</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Timeline / Growth Vision -->
+    <section class="timeline section-padding">
+      <div class="container">
+        <div class="text-center mb-4 fade-in-up">
+          <h2>Our Journey & Future</h2>
+        </div>
+        <div class="steps">
+          <div class="step-item fade-in-up">
+            <h3>2023: Founded</h3>
+            <p>Started building internal AI agents.</p>
+          </div>
+          <div class="step-item fade-in-up">
+            <h3>2024: First 100 Clients</h3>
+            <p>Universities and e-commerce leaders onboard.</p>
+          </div>
+          <div class="step-item fade-in-up">
+            <h3>2025: Global Expansion</h3>
+            <p>Multi-language, enterprise platform.</p>
+          </div>
+          <div class="step-item fade-in-up">
+            <h3>2026: AI Agent Marketplace</h3>
+            <p>Pre-built agents for every industry.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section
+      class="cta-banner"
+      style="
+        background: var(--primary-gradient);
+        color: white;
+        text-align: center;
+      "
+    >
+      <div class="container fade-in-up">
+        <h2>Ready to Build Your AI Agent?</h2>
+        <a href="contact.html" class="cta-primary">Get Started Today</a>
+      </div>
+    </section>
+
+    <!-- Floating Chatbot -->
+    <div class="chatbot-float">💬</div>
+    <div class="chatbot-window">
+      <div style="padding: 1.5rem; border-bottom: 1px solid #e2e8f0">
+        <h4>Hi! I'm Asistora Bot 👋</h4>
+      </div>
+      <div style="padding: 1rem; height: 400px; overflow-y: auto">
+        <p>Questions about our agency? Ask away!</p>
       </div>
     </div>
-  </nav>
 
-  <!-- Hero -->
-  <section class="hero" style="background: var(--primary-gradient); padding: 150px 0 100px;">
-    <div class="container">
-      <div class="hero-content text-center fade-in-up">
-        <h1>About Asistora</h1>
-        <p>Building the future of intelligent automation, one conversation at a time.</p>
-      </div>
-    </div>
-  </section>
+    <!-- Scroll Top -->
+    <button class="scroll-top">↑</button>
 
-  <!-- Mission & Vision -->
-  <section class="mission section-padding">
-    <div class="container grid grid-2">
-      <div class="fade-in-up">
-        <h2>Our Mission</h2>
-        <p>We empower businesses with AI chatbots that don't just respond—they understand, learn, and grow your revenue while reducing costs by 80%.</p>
-        <p>From universities streamlining admissions to e-commerce stores capturing cart abandonments, our technology scales with your ambitions.</p>
-      </div>
-      <div class="fade-in-up">
-        <h2>Our Vision</h2>
-        <p>A world where every business has its own intelligent agent working 24/7.</p>
-        <p>Custom AI that's easy to deploy, infinitely scalable, and delivers measurable ROI from day one.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Founder Story -->
-  <section class="founder section-padding bg-light">
-    <div class="container">
-      <div class="text-center mb-4 fade-in-up">
-        <h2>The Story Behind Asistora</h2>
-        <p>From frustration to innovation.</p>
-      </div>
-      <div class="glass-card max-w-800 mx-auto text-center fade-in-up" style="max-width: 800px;">
-        <p>Founded by a team of AI researchers and serial entrepreneurs who were tired of clunky chatbots that failed to deliver real value.</p>
-        <br>
-        <p>We built Asistora to solve this: combining cutting-edge LLMs with business intelligence to create agents that actually drive growth. What started as an internal tool for our own startups now powers hundreds of businesses worldwide.</p>
-        <blockquote style="font-style: italic; margin-top: 2rem;">
-          "We don't sell chatbots. We build growth engines."
-        </blockquote>
-      </div>
-    </div>
-  </section>
-
-  <!-- Why Choose Us -->
-  <section class="why-us section-padding">
-    <div class="container">
-      <div class="text-center mb-4 fade-in-up">
-        <h2>Why Businesses Choose Asistora</h2>
-      </div>
-      <div class="grid grid-4">
-        <div class="card text-center fade-in-up">
-          <div class="icon mb-4" style="font-size: 3rem;">🚀</div>
-          <h3>Lightning Fast Deployment</h3>
-          <p>Live in days, not months. No coding required.</p>
-        </div>
-        <div class="card text-center fade-in-up">
-          <div class="icon mb-4" style="font-size: 3rem;">🧠</div>
-          <h3>Advanced AI Intelligence</h3>
-          <p>Powered by latest LLMs with human-like understanding.</p>
-        </div>
-        <div class="card text-center fade-in-up">
-          <div class="icon mb-4" style="font-size: 3rem;">📊</div>
-          <h3>Proven ROI</h3>
-          <p>3x leads, 80% cost savings—guaranteed or your money back.</p>
-        </div>
-        <div class="card text-center fade-in-up">
-          <div class="icon mb-4" style="font-size: 3rem;">🔒</div>
-          <h3>Enterprise Security</h3>
-          <p>GCP/AWS hosted, GDPR/CCPA compliant, 99.99% uptime.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Tech Stack -->
-  <section class="tech section-padding bg-light">
-    <div class="container">
-      <div class="text-center mb-4 fade-in-up">
-        <h2>Powered by Cutting-Edge Technology</h2>
-      </div>
-      <div class="grid grid-4">
-        <div class="text-center fade-in-up">
-          <div class="logo-placeholder mb-2" style="background: #10b981; font-size: 2rem;">🤖</div>
-          <h4>LLM Models</h4>
-          <p>Latest GPT-4o, Claude, Llama</p>
-        </div>
-        <div class="text-center fade-in-up">
-          <div class="logo-placeholder mb-2" style="background: #3b82f6; font-size: 2rem;">💬</div>
-          <h4>WhatsApp API</h4>
-          <p>Official Business API</p>
-        </div>
-        <div class="text-center fade-in-up">
-          <div class="logo-placeholder mb-2" style="background: #f59e0b; font-size: 2rem;">📈</div>
-          <h4>Analytics</h4>
-          <p>Real-time dashboards</p>
-        </div>
-        <div class="text-center fade-in-up">
-          <div class="logo-placeholder mb-2" style="background: #ec4899; font-size: 2rem;">⚙️</div>
-          <h4>Integrations</h4>
-          <p>CRM, Zapier, APIs</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Timeline / Growth Vision -->
-  <section class="timeline section-padding">
-    <div class="container">
-      <div class="text-center mb-4 fade-in-up">
-        <h2>Our Journey & Future</h2>
-      </div>
-      <div class="steps">
-        <div class="step-item fade-in-up">
-          <h3>2023: Founded</h3>
-          <p>Started building internal AI agents.</p>
-        </div>
-        <div class="step-item fade-in-up">
-          <h3>2024: First 100 Clients</h3>
-          <p>Universities and e-commerce leaders onboard.</p>
-        </div>
-        <div class="step-item fade-in-up">
-          <h3>2025: Global Expansion</h3>
-          <p>Multi-language, enterprise platform.</p>
-        </div>
-        <div class="step-item fade-in-up">
-          <h3>2026: AI Agent Marketplace</h3>
-          <p>Pre-built agents for every industry.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="cta-banner" style="background: var(--primary-gradient); color: white; text-align: center;">
-    <div class="container fade-in-up">
-      <h2>Ready to Build Your AI Agent?</h2>
-      <a href="contact.html" class="cta-primary">Get Started Today</a>
-    </div>
-  </section>
-
-  <!-- Floating Chatbot -->
-  <div class="chatbot-float">💬</div>
-  <div class="chatbot-window">
-    <div style="padding: 1.5rem; border-bottom: 1px solid #e2e8f0;">
-      <h4>Hi! I'm Asistora Bot 👋</h4>
-    </div>
-    <div style="padding: 1rem; height: 400px; overflow-y: auto;">
-      <p>Questions about our agency? Ask away!</p>
-    </div>
-  </div>
-
-  <!-- Scroll Top -->
-  <button class="scroll-top">↑</button>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-section">
-          <h4>Asistora</h4>
-          <p>Intelligent Chatbots. Real Business Growth.</p>
-        </div>
-        <div class="footer-section">
-          <h4>Services">
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-section">
+            <h4>Asistora</h4>
+            <p>Intelligent Chatbots. Real Business Growth.</p>
+          </div>
+          <div class="footer-section">
+            <h4>Services</h4>
             <ul>
               <li><a href="services.html">Customer Support</a></li>
               <li><a href="services.html">Lead Generation</a></li>
@@ -215,9 +275,7 @@
           </div>
           <div class="footer-section">
             <h4>Connect</h4>
-            <div>
-              <a href="#">Twitter</a> | <a href="#">LinkedIn</a>
-            </div>
+            <div><a href="#">Twitter</a> | <a href="#">LinkedIn</a></div>
           </div>
         </div>
         <div class="footer-bottom">
@@ -226,8 +284,8 @@
       </div>
     </footer>
 
-<script src="js/chatbot.js"></script>
-  <script src="js/script.js"></script>
-</body>
-
+    <script src="js/chatbot.js"></script>
+    <script src="js/script_new.js"></script>
+  </body>
 </html>
+

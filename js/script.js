@@ -65,24 +65,61 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // Scroll reveal
+  // Scroll reveal (premium + subtle)
+  // - Uses IntersectionObserver
+  // - Only triggers when elements enter viewport
+  // - Adds `.reveal.in-view` (CSS handles fade-up + blur-to-clear)
+  // - Stagger via `data-stagger` (set in HTML) or by DOM order fallback
+  const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
+    threshold: 0.12,
+    rootMargin: '0px 0px -10% 0px'
   };
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('fade-in-up');
-        entry.target.classList.add('animate');
-      }
-    });
-  }, observerOptions);
+  const revealSelector = '[data-reveal], .reveal, .fade-in-up';
+  const toReveal = Array.from(document.querySelectorAll(revealSelector));
 
-  document.querySelectorAll('.fade-in-up, .card, .step-item').forEach(el => {
-    observer.observe(el);
+  // Normalize: map legacy `.fade-in-up` usage to the new `.reveal` system, without breaking old animation.
+  toReveal.forEach((el) => {
+    if (el.classList.contains('fade-in-up') && !el.classList.contains('reveal')) {
+      el.classList.add('reveal');
+    }
+    if (!el.hasAttribute('data-reveal')) {
+      // Allow stagger if caller already set --stagger; otherwise we compute later.
+      if (el.style && el.style.getPropertyValue('--stagger') === '') {
+        // no-op
+      }
+    }
   });
+
+  // Assign a simple stagger index if none provided.
+  // This keeps the motion premium without requiring HTML updates everywhere.
+  let cursor = 0;
+  const step = 1;
+  toReveal.forEach((el) => {
+    if (!el.style.getPropertyValue('--stagger') && el.getAttribute('data-stagger') == null) {
+      el.style.setProperty('--stagger', String(cursor * step));
+      cursor += 1;
+    }
+  });
+
+  if (!prefersReduced) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    toReveal.forEach((el) => observer.observe(el));
+  } else {
+    // Respect reduced motion: make everything visible immediately.
+    toReveal.forEach((el) => el.classList.add('in-view'));
+  }
+
 
   // Navbar scroll effect
   window.addEventListener('scroll', () => {
@@ -133,11 +170,11 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
 
-  if (testimonials.length > 0) {
+  if (testimonialCards.length > 0) {
     // Ensure consistent initial state
     showTestimonial(0);
     setInterval(() => {
-      currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+      currentTestimonial = (currentTestimonial + 1) % testimonialCards.length;
       showTestimonial(currentTestimonial);
     }, 5000);
   }

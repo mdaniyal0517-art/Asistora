@@ -1,247 +1,348 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pricing - Asistora AI Chatbots</title>
-  <meta name="description" content="Transparent pricing for AI chatbots. Starter, Business, Enterprise plans with free trial.">
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-
-  <!-- Loading Screen -->
-  <div class="loading">
-    <div class="spinner"></div>
-  </div>
-
-  <!-- Navbar -->
-  <nav class="navbar">
-    <div class="nav-container container">
-      <a href="index.html" class="logo">Asistora</a>
-      <ul class="nav-menu">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="#pricing" class="active">Pricing</a></li>
-        <li><a href="portfolio.html">Portfolio</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-      <div class="mobile-toggle">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pricing - Asistora AI Chatbots</title>
+    <meta
+      name="description"
+      content="Transparent pricing for AI chatbots. Starter, Business, Enterprise plans with free trial."
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- Loading Screen -->
+    <div class="loading">
+      <div class="spinner"></div>
     </div>
-  </nav>
 
-  <!-- Hero -->
-  <section class="hero" style="background: linear-gradient(135deg, #1e3a8a 0%, #64748b 100%); padding: 150px 0 100px;">
-    <div class="container">
-      <div class="hero-content text-center fade-in-up">
-        <h1>Simple, Predictable Pricing</h1>
-        <p>Choose the perfect plan for your business. No hidden fees, cancel anytime.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Pricing Toggle -->
-  <section class="pricing-toggle section-padding bg-light text-center">
-    <div class="container">
-      <div class="fade-in-up">
-        <div class="price-toggle">
-          <label class="toggle-switch">
-            <input type="checkbox" id="monthly-toggle">
-            <span class="slider"></span>
-          </label>
-          <div>
-            <strong>Monthly</strong> <span style="color: var(--text-gray);">/ Yearly (save 20%)</span>
-          </div>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="nav-container container">
+        <a href="index.html" class="logo">Asistora</a>
+        <ul class="nav-menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="#pricing" class="active">Pricing</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="mobile-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
       </div>
-    </div>
-  </section>
+    </nav>
 
-  <!-- Pricing Cards -->
-  <section id="pricing" class="pricing section-padding">
-    <div class="container">
-      <div class="grid grid-3">
-        <!-- Starter -->
-        <div class="pricing-card fade-in-up">
-          <h3>Starter</h3>
-          <div class="price">$49 <span id="starter-period">/mo</span></div>
-          <p id="starter-bill">Billed monthly</p>
-          <ul>
-            <li>✓ Basic Chatbot</li>
-            <li>✓ Website Widget</li>
-            <li>✓ 1,000 conversations/mo</li>
-            <li>✓ Email Support</li>
-            <li>✗ WhatsApp</li>
-            <li>✗ Analytics</li>
-          </ul>
-          <a href="contact.html" class="cta-primary" style="margin-top: 2rem; display: block;">Get Started</a>
-        </div>
-
-        <!-- Business Featured -->
-        <div class="pricing-card featured fade-in-up">
-          <div class="popular">Most Popular</div>
-          <h3>Business</h3>
-          <div class="price">$199 <span id="business-period">/mo</span></div>
-          <p id="business-bill">Billed monthly</p>
-          <ul>
-            <li>✓ Advanced Chatbot</li>
-            <li>✓ WhatsApp Integration</li>
-            <li>✓ 10,000 conversations/mo</li>
-            <li>✓ Lead Capture Forms</li>
-            <li>✓ Analytics Dashboard</li>
-            <li>✓ Priority Support</li>
-          </ul>
-          <a href="contact.html" class="cta-primary" style="background: white; color: #764ba2; margin-top: 2rem; display: block;">Start Free Trial</a>
-        </div>
-
-        <!-- Enterprise -->
-        <div class="pricing-card fade-in-up">
-          <h3>Enterprise</h3>
-          <div class="price">Custom</div>
-          <p>Contact sales</p>
-          <ul>
-            <li>✓ Custom AI Agents</li>
-            <li>✓ Unlimited Conversations</li>
-            <li>✓ Full API Access</li>
-            <li>✓ Dedicated Manager</li>
-            <li>✓ On-premise option</li>
-            <li>✓ SLA 99.99%</li>
-          </ul>
-          <a href="contact.html" class="cta-primary" style="margin-top: 2rem; display: block;">Contact Sales</a>
+    <!-- Hero -->
+    <section
+      class="hero"
+      style="
+background: var(--primary-gradient);
+        padding: 150px 0 100px;
+      "
+    >
+      <div class="container">
+        <div class="hero-content text-center fade-in-up">
+          <h1>Simple, Predictable Pricing</h1>
+          <p>
+            Choose the perfect plan for your business. No hidden fees, cancel
+            anytime.
+          </p>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- FAQ -->
-  <section class="faq section-padding bg-light">
-    <div class="container">
-      <div class="text-center mb-4 fade-in-up">
-        <h2>Frequently Asked Questions</h2>
-      </div>
-      <div style="max-width: 800px; margin: 0 auto;">
-        <div class="faq-item">
-          <div class="faq-question">
-            <span>How quick is setup?</span>
-            <span class="faq-icon">+</span>
-          </div>
-          <div class="faq-answer">
-            <p>Basic setup takes 48 hours. Custom solutions 1-2 weeks. We handle everything.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-question">
-            <span>What if I need custom features?</span>
-            <span class="faq-icon">+</span>
-          </div>
-          <div class="faq-answer">
-            <p>Enterprise plan includes unlimited customization. Most features available in Business too.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-question">
-            <span>Do you offer refunds?</span>
-            <span class="faq-icon">+</span>
-          </div>
-          <div class="faq-answer">
-            <p>14-day money-back guarantee. No risk to try.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-question">
-            <span>Can I migrate from other platforms?</span>
-            <span class="faq-icon">+</span>
-          </div>
-          <div class="faq-answer">
-            <p>Yes, we offer free migration from Dialogflow, ManyChat, etc.</p>
+    <!-- Pricing Toggle -->
+    <section class="pricing-toggle section-padding bg-light text-center">
+      <div class="container">
+        <div class="fade-in-up">
+          <div class="price-toggle">
+            <label class="toggle-switch">
+              <input type="checkbox" id="monthly-toggle" />
+              <span class="slider"></span>
+            </label>
+            <div>
+              <strong>Monthly</strong>
+              <span style="color: var(--text-gray)">/ Yearly (save 20%)</span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- CTA -->
-  <section class="cta-banner section-padding" style="background: var(--primary-gradient); color: white; text-align: center;">
-    <div class="container fade-in-up">
-      <h2>Not Sure Which Plan?</h2>
-      <p>We'll recommend the perfect fit in a free strategy call.</p>
-      <a href="contact.html" class="cta-primary">Book Strategy Call</a>
-    </div>
-  </section>
+    <!-- Pricing Cards -->
+    <section id="pricing" class="pricing section-padding">
+      <div class="container">
+        <div class="grid grid-3">
+          <!-- Starter -->
+          <div class="pricing-card fade-in-up">
+            <h3>Starter</h3>
+<div class="price">$255 <span id="starter-period">/mo</span></div>
+            <p id="starter-bill">Billed monthly</p>
+            <ul>
+              <li>✓ Basic Chatbot</li>
+              <li>✓ Website Widget</li>
+              <li>✓ 1,000 conversations/mo</li>
+              <li>✓ Email Support</li>
+              <li>✗ WhatsApp</li>
+              <li>✗ Analytics</li>
+            </ul>
+            <a
+              href="contact.html"
+              class="cta-primary"
+              style="margin-top: 2rem; display: block"
+              >Get Started</a
+            >
+          </div>
 
-  <!-- Floating Chatbot -->
-  <div class="chatbot-float">💬</div>
-  <div class="chatbot-window">
-    <div style="padding: 1.5rem; border-bottom: 1px solid #e2e8f0;">
-      <h4>Pricing Questions? 💰</h4>
-    </div>
-    <div style="padding: 1rem; height: 400px; overflow-y: auto;">
-      <p>I'm here to help choose your plan!</p>
-    </div>
-  </div>
+          <!-- Business Featured -->
+          <div class="pricing-card featured fade-in-up">
+            <div class="popular">Most Popular</div>
+            <h3>Business</h3>
+<div class="price">$430 <span id="business-period">/mo</span></div>
+            <p id="business-bill">Billed monthly</p>
+            <ul>
+              <li>✓ Advanced Chatbot</li>
+              <li>✓ WhatsApp Integration</li>
+              <li>✓ 10,000 conversations/mo</li>
+              <li>✓ Lead Capture Forms</li>
+              <li>✓ Analytics Dashboard</li>
+              <li>✓ Priority Support</li>
+            </ul>
+            <a
+              href="contact.html"
+              class="cta-primary"
+              style="
+                background: white;
+color: var(--accent);
+                margin-top: 2rem;
+                display: block;
+              "
+              >Start Free Trial</a
+            >
+          </div>
 
-  <!-- Scroll Top -->
-  <button class="scroll-top">↑</button>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-section">
-          <h4>Asistora</h4>
-          <p>Intelligent Chatbots. Real Business Growth.</p>
-        </div>
-        <div class="footer-section">
-          <h4>Pricing</h4>
-          <ul>
-            <li><a href="#pricing">Compare Plans</a></li>
-            <li><a href="services.html">Services</a></li>
-          </ul>
-        </div>
-        <div class="footer-section">
-          <h4>Company</h4>
-          <ul>
-            <li><a href="about.html">About</a></li>
-            <li><a href="portfolio.html">Portfolio</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </div>
-        <div class="footer-section">
-          <h4>Connect</h4>
-          <div>
-            <a href="#">Twitter</a> | <a href="#">LinkedIn</a>
+          <!-- Enterprise -->
+          <div class="pricing-card fade-in-up">
+            <h3>Enterprise</h3>
+            <div class="price">Custom</div>
+            <p>Contact sales</p>
+            <ul>
+              <li>✓ Custom AI Agents</li>
+              <li>✓ Unlimited Conversations</li>
+              <li>✓ Full API Access</li>
+              <li>✓ Dedicated Manager</li>
+              <li>✓ On-premise option</li>
+              <li>✓ SLA 99.99%</li>
+            </ul>
+            <a
+              href="contact.html"
+              class="cta-primary"
+              style="margin-top: 2rem; display: block"
+              >Contact Sales</a
+            >
           </div>
         </div>
       </div>
-      <div class="footer-bottom">
-        <p>© 2024 Asistora. All rights reserved.</p>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq section-padding bg-light">
+      <div class="container">
+        <div class="text-center mb-4 fade-in-up">
+          <h2>Frequently Asked Questions</h2>
+        </div>
+        <div style="max-width: 800px; margin: 0 auto">
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>How quick is setup?</span>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              <p>
+                Basic setup takes 48 hours. Custom solutions 1-2 weeks. We
+                handle everything.
+              </p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>What if I need custom features?</span>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              <p>
+                Enterprise plan includes unlimited customization. Most features
+                available in Business too.
+              </p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Do you offer refunds?</span>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              <p>14-day money-back guarantee. No risk to try.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Can I migrate from other platforms?</span>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              <p>
+                Yes, we offer free migration from Dialogflow, ManyChat, etc.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section
+      class="cta-banner section-padding"
+      style="
+        background: var(--primary-gradient);
+        color: white;
+        text-align: center;
+      "
+    >
+      <div class="container fade-in-up">
+        <h2>Not Sure Which Plan?</h2>
+        <p>We'll recommend the perfect fit in a free strategy call.</p>
+        <a href="contact.html" class="cta-primary">Book Strategy Call</a>
+      </div>
+    </section>
+
+    <!-- Floating Chatbot -->
+    <div class="chatbot-float" aria-label="Open chat">
+      <div class="robot" aria-hidden="true">
+        <div class="robot-body">
+          <div class="robot-head">
+            <div class="robot-eyes">
+              <span class="eye left"></span>
+              <span class="eye right"></span>
+              <span class="blink"></span>
+            </div>
+            <div class="robot-mouth"></div>
+          </div>
+          <div class="robot-antennas">
+            <span class="antenna"></span>
+            <span class="antenna antenna-2"></span>
+          </div>
+          <div class="robot-arm left-arm">
+            <div class="arm-segment"></div>
+            <div class="hand"></div>
+          </div>
+          <div class="robot-arm right-arm">
+            <div class="arm-segment"></div>
+            <div class="hand"></div>
+          </div>
+          <div class="robot-lights">
+            <span></span>
+            <span></span>
+          </div>
+          <div class="robot-shadow"></div>
+        </div>
       </div>
     </div>
-  </footer>
+    <div class="chatbot-window">
+      <div class="chatbot-window-header" style="padding: 1.5rem; border-bottom: 1px solid #e2e8f0">
+        <div class="chatbot-window-header-inner">
+          <div class="robot robot-mini" aria-hidden="true">
+            <div class="robot-body">
+              <div class="robot-head">
+                <div class="robot-eyes">
+                  <span class="eye left"></span>
+                  <span class="eye right"></span>
+                  <span class="blink"></span>
+                </div>
+                <div class="robot-mouth"></div>
+              </div>
+              <div class="robot-antennas">
+                <span class="antenna"></span>
+                <span class="antenna antenna-2"></span>
+              </div>
+            </div>
+          </div>
+          <h4 style="margin: 0">Pricing Questions?</h4>
+        </div>
+      </div>
+      <div style="padding: 1rem; height: 400px; overflow-y: auto">
+        <p>I'm here to help choose your plan!</p>
+      </div>
+    </div>
 
-  <script src="js/script.js"></script>
-  <script>
-    // Pricing toggle functionality
-    document.addEventListener('DOMContentLoaded', function() {
-      const toggle = document.querySelector('#monthly-toggle');
-      const periods = document.querySelectorAll('[id$="-period"]');
-      const bills = document.querySelectorAll('[id$="-bill"]');
-      const prices = document.querySelectorAll('.price > :first-child');
-      
-      toggle.addEventListener('change', function() {
-        const isYearly = this.checked;
-        periods.forEach(p => p.textContent = isYearly ? '/yr' : '/mo');
-        bills.forEach(b => b.textContent = isYearly ? 'Billed yearly (save 20%)' : 'Billed monthly');
-        prices.forEach(price => {
-          const val = parseInt(price.textContent);
-          price.textContent = isYearly ? (val * 12 * 0.8 / 12).toFixed(0) : val;
+    <!-- Scroll Top -->
+    <button class="scroll-top">↑</button>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-section">
+            <h4>Asistora</h4>
+            <p>Intelligent Chatbots. Real Business Growth.</p>
+          </div>
+          <div class="footer-section">
+            <h4>Pricing</h4>
+            <ul>
+              <li><a href="#pricing">Compare Plans</a></li>
+              <li><a href="services.html">Services</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="about.html">About</a></li>
+              <li><a href="portfolio.html">Portfolio</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4>Connect</h4>
+            <div><a href="#">Twitter</a> | <a href="#">LinkedIn</a></div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2024 Asistora. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/script_new.js"></script>
+    <script>
+
+      // Pricing toggle functionality
+      document.addEventListener("DOMContentLoaded", function () {
+        const toggle = document.querySelector("#monthly-toggle");
+        const periods = document.querySelectorAll('[id$="-period"]');
+        const bills = document.querySelectorAll('[id$="-bill"]');
+        const prices = document.querySelectorAll(".price > :first-child");
+
+        toggle.addEventListener("change", function () {
+          const isYearly = this.checked;
+          periods.forEach((p) => (p.textContent = isYearly ? "/yr" : "/mo"));
+          bills.forEach(
+            (b) =>
+              (b.textContent = isYearly
+                ? "Billed yearly (save 20%)"
+                : "Billed monthly"),
+          );
+          prices.forEach((price) => {
+            const val = parseInt(price.textContent);
+            price.textContent = isYearly
+              ? ((val * 12 * 0.8) / 12).toFixed(0)
+              : val;
+          });
         });
       });
-    });
-  </script>
-</body>
+    </script>
+  </body>
 </html>

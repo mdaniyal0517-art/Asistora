@@ -15,68 +15,62 @@ class AsistoraChatbot {
     // IMPORTANT: keep ONLY services that exist as <section id="..."> on your website.
     this.services = [
       {
-        id: 'support',
+        id: 'ai-customer-support-chatbots',
         icon: '🎭',
         title: 'AI Customer Support Chatbots',
         description: '24/7 support agents that resolve customer questions quickly and escalate when needed.',
-        href: 'services.html#support'
+        href: 'services.html#ai-customer-support-chatbots'
       },
       {
-        id: 'whatsapp',
-        icon: '📱',
-        title: 'WhatsApp Automation Bots',
-        description: 'WhatsApp Business API flows for lead nurturing and customer communication.',
-        href: 'services.html#whatsapp'
+        id: 'website-chatbots',
+        icon: '🧩',
+        title: 'Website Chatbots',
+        description: 'Engage visitors with proactive, personalized support that increases conversions.',
+        href: 'services.html#website-chatbots'
       },
       {
-        id: 'leads',
-        icon: '📬',
-        title: 'Lead Generation Bots',
-        description: 'Qualify leads 24/7 and book meetings automatically.',
-        href: 'services.html#leads'
-      },
-      {
-        id: 'no-show-reducer',
+        id: 'whatsapp-no-show-reducer',
         icon: '📉',
         title: 'WhatsApp No-Show Reducer',
         description: 'Automated reminders + nudges that reduce no-shows and improve attendance.',
-        href: 'services.html#no-show-reducer'
+        href: 'services.html#whatsapp-no-show-reducer'
       },
       {
-        id: 'review-reply-generator',
-        icon: '💬',
-        title: 'AI Review Reply Generator',
-        description: 'Instant, brand-aligned replies for Google reviews and customer feedback.',
-        href: 'services.html#review-reply-generator'
+        id: 'whatsapp-automation-bots',
+        icon: '📱',
+        title: 'WhatsApp Automation Bots',
+        description: 'WhatsApp Business API flows for lead nurturing and customer communication.',
+        href: 'services.html#whatsapp-automation-bots'
       },
       {
-        id: 'rebooking-loyalty-nudges',
-        icon: '🔁',
-        title: 'Rebooking & Loyalty Nudges',
-        description: 'Smart follow-ups that bring customers back and build loyalty.',
-        href: 'services.html#rebooking-loyalty-nudges'
+        id: 'lead-generation-bots',
+        icon: '📬',
+        title: 'Lead Generation Bots',
+        description: 'Qualify leads 24/7 and book meetings automatically.',
+        href: 'services.html#lead-generation-bots'
       },
       {
-        id: 'missed-call-textback',
-        icon: '📞',
-        title: 'Missed-Call to Booking Textback',
-        description: 'Auto-text the customer and guide them to booking in seconds.',
-        href: 'services.html#missed-call-textback'
+        id: 'ai-appointment-booking',
+        icon: '📅',
+        title: 'AI Appointment Booking',
+        description: 'Frictionless scheduling that handles rescheduling and reminders.',
+        href: 'services.html#ai-appointment-booking'
       },
       {
-        id: 'quote-followup-autopilot',
-        icon: '🧠',
-        title: 'Quote Follow-Up Autopilot',
-        description: 'Automated quote reminders that convert more leads with less effort.',
-        href: 'services.html#quote-followup-autopilot'
+        id: 'custom-ai-agents',
+        icon: '🤖',
+        title: 'Custom AI Agents',
+        description: 'Bespoke intelligence for complex workflows beyond simple chat.',
+        href: 'services.html#custom-ai-agents'
       },
       {
-        id: 'review-request-engine',
-        icon: '⭐',
-        title: 'Review Request Engine',
-        description: 'Request reviews at the right time to grow reputation and conversions.',
-        href: 'services.html#review-request-engine'
+        id: 'business-process-automation',
+        icon: '⚙️',
+        title: 'Business Process Automation',
+        description: 'End-to-end workflow automation powered by AI decision-making.',
+        href: 'services.html#business-process-automation'
       }
+
     ];
 
 
@@ -88,14 +82,14 @@ class AsistoraChatbot {
 
     this.setupDOM();
 
-  // Ensure chat is hidden initially (use CSS .active for transitions)
-
-  this.chatWindow.classList.remove('active');
+    // Ensure chat is hidden initially (use CSS .active for transitions)
+    this.chatWindow.classList.remove('active');
 
     // Accessible toggle button
     this.chatToggle.setAttribute('role', 'button');
     this.chatToggle.setAttribute('aria-expanded', 'false');
     this.chatToggle.setAttribute('aria-label', 'Open chat');
+
     // Make sure the float button is clickable and on top
     try {
       this.chatToggle.style.cursor = 'pointer';
@@ -211,18 +205,19 @@ class AsistoraChatbot {
     `;
     
     const bubble = document.createElement('div');
-    bubble.style.cssText = `
+      bubble.style.cssText = `
       max-width: 75%;
       padding: 0.875rem 1.125rem;
       border-radius: 20px;
       word-wrap: break-word;
       ${sender === 'bot' ? 
-        'background: #f1f5f9; color: #1e293b; border-bottom-left-radius: 8px;' : 
-        'background: linear-gradient(135deg, var(--primary-dark), var(--primary-light)); color: white; border-bottom-right-radius: 8px;'}
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        'background: #F3F4F6; color: #1F2937; border-bottom-left-radius: 8px; border: 1px solid #E5E7EB;' : 
+        'background: #374151; color: #ffffff; border-bottom-right-radius: 8px; border: 1px solid rgba(55, 65, 81, 0.35);'}
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
       font-size: 14px;
       line-height: 1.4;
     `;
+
     bubble.textContent = text;
     
     message.appendChild(bubble);
@@ -254,24 +249,65 @@ class AsistoraChatbot {
 
 
   resolveServiceFromText(userText) {
+    // Map user intent keywords to ONLY the 8 allowed services.
     const t = (userText || '').toLowerCase();
+
     const map = [
-      { test: ['no-show', 'no show', 'noshow'], id: 'no-show-reducer' },
-      { test: ['review reply', 'review', 'reviews', 'reply'], id: 'review-reply-generator' },
-      { test: ['rebooking', 'loyalty', 'nudges', 'repeat'], id: 'rebooking-loyalty-nudges' },
-      { test: ['missed call', 'missed-call', 'textback', 'text back'], id: 'missed-call-textback' },
-      { test: ['quote', 'follow up', 'follow-up', 'autopilot'], id: 'quote-followup-autopilot' },
-      { test: ['review request', 'request reviews', 'rating'], id: 'review-request-engine' }
+      // 1) AI Customer Support Chatbots
+      { test: ['support', 'customer support', 'helpdesk', 'help desk', 'faq'], id: 'ai-customer-support-chatbots' },
+
+      // 2) Website Chatbots
+      { test: ['website', 'web site', 'site', 'landing', 'web chatbot', 'chatbot'], id: 'website-chatbots' },
+
+      // 3) WhatsApp No-Show Reducer
+      { test: ['no-show', 'no show', 'noshow', 'missed appointment', 'no show reducer'], id: 'whatsapp-no-show-reducer' },
+
+      // 4) WhatsApp Automation Bots
+      { test: ['whatsapp', 'whats app', 'wa bot', 'whatsapp automation', 'message', 'messaging'], id: 'whatsapp-automation-bots' },
+
+      // 5) Lead Generation Bots
+      { test: ['lead', 'leads', 'generate leads', 'lead gen', 'lead generation'], id: 'lead-generation-bots' },
+
+      // 6) AI Appointment Booking
+      { test: ['appointment', 'book', 'booking', 'schedule', 'reschedule', 'calendar'], id: 'ai-appointment-booking' },
+
+      // 7) Custom AI Agents
+      { test: ['custom', 'agent', 'agents', 'ai agents', 'build agent', 'custom ai'], id: 'custom-ai-agents' },
+
+      // 8) Business Process Automation
+      { test: ['automation', 'automate', 'workflow', 'workflows', 'process', 'business process', 'orchestration'], id: 'business-process-automation' }
     ];
+
     for (const row of map) {
       if (row.test.some(k => t.includes(k))) return row.id;
     }
     return null;
   }
 
+
+
   renderServiceCards({ subsetIds = null, introText = 'Here are our available automation products. Click any option to explore more.' } = {}) {
+
     const ids = subsetIds && subsetIds.length ? subsetIds : this.services.map(s => s.id);
-    const cards = ids.map(id => this.services.find(s => s.id === id)).filter(Boolean);
+    // Reliability: render only destinations that exist on services.html.
+    const cards = ids
+      .map(id => this.services.find(s => s.id === id))
+      .filter(Boolean)
+      .filter(service => {
+        try {
+          const anchorId = (service && service.id) ? service.id : '';
+          if (!anchorId) return false;
+          // Since all links are to services.html#<id>, we can validate the hash target
+          // when user is already on services.html. Otherwise we still validate against
+          // a DOM-less environment by checking window location.
+          const isOnServicesPage = (window.location.pathname || '').endsWith('services.html');
+          if (!isOnServicesPage) return true; // will be validated again after navigation
+          return !!document.getElementById(anchorId);
+        } catch (e) {
+          return false;
+        }
+      });
+
 
     // Intro message bubble
     if (introText) {
@@ -283,8 +319,10 @@ class AsistoraChatbot {
     wrapper.style.cssText = 'margin-top: 10px; display:grid; grid-template-columns: 1fr; gap: 10px;';
 
     cards.forEach(service => {
-      const card = document.createElement('button');
-      card.type = 'button';
+      const card = document.createElement('a');
+      card.setAttribute('href', service.href);
+      card.setAttribute('role', 'button');
+
       card.className = 'chat-service-card';
       card.setAttribute('aria-label', `Open ${service.title}`);
       card.style.cssText = `
@@ -293,22 +331,34 @@ class AsistoraChatbot {
         text-align:left;
         padding: 12px 12px;
         border-radius: 16px;
-        background: rgba(255,255,255,0.95);
-        border: 1px solid rgba(2,8,23,0.08);
-        box-shadow: 0 6px 18px rgba(2,8,23,0.06);
+        background: rgba(255,255,255,0.98);
+        border: 1px solid #E5E7EB;
+        box-shadow: 0 6px 18px rgba(15,23,42,0.05);
         cursor:pointer;
         transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
       `;
 
-      card.addEventListener('click', () => {
+
+      // Click should follow the real href.
+      // We still call navigateToService to close the chatbot immediately.
+      card.addEventListener('click', (e) => {
+        e.preventDefault();
         this.navigateToService(service);
       });
+      // Also expose href for debugging/a11y
+      card.setAttribute('data-href', service.href);
+      // Ensure card behaves like a link
+      card.style.textDecoration = 'none';
+
+
 
       // Icon
+
       const icon = document.createElement('div');
       icon.textContent = service.icon;
       icon.setAttribute('aria-hidden', 'true');
-      icon.style.cssText = 'font-size: 22px; width: 34px; height: 34px; display:flex; align-items:center; justify-content:center; border-radius: 12px; background: rgba(59,130,246,0.10); border: 1px solid rgba(59,130,246,0.18);';
+      icon.style.cssText = 'font-size: 22px; width: 34px; height: 34px; display:flex; align-items:center; justify-content:center; border-radius: 12px; background: rgba(31,41,55,0.06); border: 1px solid #E5E7EB; color: #111827;';
+
 
       const body = document.createElement('div');
       body.style.cssText = 'min-width:0;';
@@ -324,7 +374,8 @@ class AsistoraChatbot {
       const arrow = document.createElement('div');
       arrow.textContent = '↗';
       arrow.setAttribute('aria-hidden', 'true');
-      arrow.style.cssText = 'margin-left:auto; color: rgba(37,99,235,0.85); font-weight:900; padding-top:2px;';
+      arrow.style.cssText = 'margin-left:auto; color: rgba(31,41,55,0.78); font-weight:900; padding-top:2px;';
+
 
       body.appendChild(title);
       body.appendChild(desc);
@@ -336,14 +387,15 @@ class AsistoraChatbot {
       // Hover animation (with reduced motion support via CSS)
       card.addEventListener('pointerenter', () => {
         card.style.transform = 'translateY(-2px)';
-        card.style.boxShadow = '0 14px 28px rgba(2,8,23,0.10)';
-        card.style.borderColor = 'rgba(59,130,246,0.25)';
+        card.style.boxShadow = '0 14px 28px rgba(15,23,42,0.10)';
+        card.style.borderColor = '#D1D5DB';
       });
       card.addEventListener('pointerleave', () => {
         card.style.transform = 'translateY(0)';
-        card.style.boxShadow = '0 6px 18px rgba(2,8,23,0.06)';
-        card.style.borderColor = 'rgba(2,8,23,0.08)';
+        card.style.boxShadow = '0 6px 18px rgba(15,23,42,0.05)';
+        card.style.borderColor = '#E5E7EB';
       });
+
 
       wrapper.appendChild(card);
     });
@@ -362,16 +414,21 @@ class AsistoraChatbot {
 
   navigateToService(service) {
     try {
+      if (!service || !service.href) return;
+
+      // Close chatbot first so user sees navigation immediately
+      this.setOpen(false);
+
       const url = service.href;
-      const shouldMinimize = true;
+      const hash = url.includes('#') ? url.split('#')[1] : '';
 
-      if (shouldMinimize) this.setOpen(false);
-
-      // Redirect to services page with hash
-      if (url && url.includes('#')) {
-        const hash = url.split('#')[1] || '';
-        // Ensure smooth-scroll after navigation to hash (works even when browsers don't scroll smoothly)
+      if (hash) {
+        // Navigate with hash, then force scroll after load (helps on some browsers)
         window.location.href = `services.html#${hash}`;
+        // Also set a flag for the next page load
+        try {
+          window.sessionStorage.setItem('asistoraScrollTo', hash);
+        } catch (e) {}
         return;
       }
 
@@ -381,25 +438,52 @@ class AsistoraChatbot {
     }
   }
 
+
+
   // Ensure smooth scroll to hash target after arriving on services.html
   afterNavigationScroll() {
     try {
-      if (window.location.pathname && !window.location.pathname.endsWith('services.html')) return;
+      const isServicesPage = window.location.pathname && window.location.pathname.endsWith('services.html');
+      if (!isServicesPage) return;
 
-      const hash = (window.location.hash || '').replace('#', '').trim();
+      // Prefer hash in URL; fallback to our scroll flag.
+      const urlHash = (window.location.hash || '').replace('#', '').trim();
+      const sessionHash = (() => {
+        try {
+          return window.sessionStorage.getItem('asistoraScrollTo') || '';
+        } catch (e) {
+          return '';
+        }
+      })();
+
+      const hash = urlHash || sessionHash;
       if (!hash) return;
 
       const el = document.getElementById(hash);
-      if (!el) return;
+      if (!el) {
+        console.warn('Chatbot scroll target not found:', hash);
+        return;
+      }
 
       // Allow layout to settle before scrolling (esp. on mobile)
-      setTimeout(() => {
+      const doScroll = () => {
         el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 150);
+      };
+
+      requestAnimationFrame(() => {
+        requestAnimationFrame(doScroll);
+      });
+
+      // Clear flag after use
+      try {
+        window.sessionStorage.removeItem('asistoraScrollTo');
+      } catch (e) {}
     } catch (e) {
       // no-op
     }
   }
+
+
 
 
   sendMessage() {
@@ -416,13 +500,22 @@ class AsistoraChatbot {
     this.chatInput.value = '';
     this.addMessage(message, 'user');
 
-    // Navigation-first UX: show interactive cards immediately
+      // Navigation-first UX: show interactive cards immediately
     if (cardsBeforeAI) {
       this.hideTyping();
-      const intro = shouldCards ? 'Here are our available automation products. Click any option to explore more.' : '';
-      this.renderServiceCards({ subsetIds: subsetIds, introText: intro });
+
+      // If user asks about services/products/solutions, show ONLY the 8 services.
+      // If message matches a specific service, show just that service.
+      const shouldShowAll = shouldCards && !matchedServiceId;
+      const intro = shouldCards ? 'Here are our AI automation services. Click any service to explore more.' : '';
+
+      this.renderServiceCards({
+        subsetIds: shouldShowAll ? null : subsetIds,
+        introText: intro
+      });
       return;
     }
+
 
     this.showTyping();
 
@@ -459,8 +552,10 @@ Rules:
 
       // Try server proxy first
   // Prefer explicit proxy during local development so requests don't hit a static dev server (e.g. Live Server on :5500)
-  const proxyHost = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') ? 'http://localhost:3000' : '';
-  const proxyUrl = proxyHost + '/api/chat' || 'https://asistora.vercel.app/api/chat';
+  const isLocalhost = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+  const localProxyUrl = 'http://localhost:3000/api/chat';
+  const vercelProxyUrl = 'https://asistora.vercel.app/api/chat';
+  const proxyUrl = isLocalhost ? localProxyUrl : vercelProxyUrl;
 
       const tryProxy = (url) => fetch(url, {
         method: 'POST',
@@ -472,13 +567,9 @@ Rules:
         return r.json();
       });
 
-      // Try primary port then fallback to alternate port (3000) before demo
-      tryProxy(proxyUrl)
-      .catch(() => {
-        const altUrl = 'http://localhost:3000/api/chat';
-        if (proxyUrl === altUrl) throw new Error('no-alt');
-        return tryProxy(altUrl);
-      })
+      // Local: if :3000 fails, try direct (302/alt) before showing demo.
+      // Production: only try the configured Vercel proxy.
+      (isLocalhost ? tryProxy(proxyUrl).catch(() => tryProxy(vercelProxyUrl)) : tryProxy(proxyUrl))
       .then(data => {
         this.hideTyping();
         const reply = (data && data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content) || (data && data.reply) || 'Sorry, no reply.';
@@ -487,7 +578,8 @@ Rules:
       .catch(() => {
         setTimeout(() => {
           this.hideTyping();
-          this.addMessage('Thanks for the message — demo reply. To enable real AI replies, add your GROQ_API_KEY to the server .env and run the proxy.', 'bot');
+          const attempted = proxyUrl;
+          this.addMessage(`Sorry — demo reply. Proxy failed (${attempted}). To enable real AI replies, set GROQ_API_KEY on the server and re-run the proxy.`, 'bot');
         }, 800);
       });
 
@@ -545,14 +637,16 @@ Rules:
     typingMsg.className = 'message-bot';
     typingMsg.style.cssText = 'display: flex; justify-content: flex-start; padding-bottom: 0.25rem;';
     
-    const typingBubble = document.createElement('div');
+      const typingBubble = document.createElement('div');
     typingBubble.style.cssText = `
       display: flex; align-items: center; gap: 0.5rem;
-      background: #f1f5f9; color: #1e293b; padding: 0.875rem 1.125rem; 
+      background: #F3F4F6; color: #1F2937; padding: 0.875rem 1.125rem; 
       border-radius: 20px; border-bottom-left-radius: 8px;
       font-size: 14px;
+      border: 1px solid #E5E7EB;
     `;
-    typingBubble.innerHTML = '<div style="width:16px;height:16px;border:2px solid #e2e8f0;border-radius:50%;border-top-color:var(--accent);animation:spin 1s linear infinite;"></div> Typing...';
+    typingBubble.innerHTML = '<div style="width:16px;height:16px;border:2px solid #E5E7EB;border-radius:50%;border-top-color:var(--accent);animation:spin 1s linear infinite;"></div> Typing...';
+
     
     typingMsg.appendChild(typingBubble);
     this.chatMessages.appendChild(typingMsg);
